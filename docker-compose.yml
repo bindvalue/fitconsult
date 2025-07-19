@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: striking-consult-app
+    ports:
+      - "${APP_PORT:-80}:80"
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - .env
+    restart: unless-stopped
+    networks:
+      - striking-network
+
+  # Nginx Proxy (opcional - para múltiplos domínios)
+  nginx-proxy:
+    image: nginx:alpine
+    container_name: striking-nginx-proxy
+    ports:
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - app
+    restart: unless-stopped
+    networks:
+      - striking-network
+    profiles:
+      - proxy
+
+networks:
+  striking-network:
+    driver: bridge
+
+volumes:
+  nginx_ssl:
+    driver: local
