@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Brand Colors - baseadas nas cores fornecidas */
+    --brand-orange: 23 89% 55%;   /* #F36D24 */
+    --brand-gray: 0 0% 71%;       /* #B6BBBE */
+    --brand-dark: 0 0% 7%;        /* #121212 */
+    --brand-darker: 0 0% 10%;     /* #1A1A1A */
+    
+    /* Light Theme */
+    --background: 0 0% 98%;
+    --foreground: var(--brand-dark);
+
+    --card: 0 0% 100%;
+    --card-foreground: var(--brand-dark);
+
+    --popover: 0 0% 100%;
+    --popover-foreground: var(--brand-dark);
+
+    --primary: var(--brand-orange);
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 23 89% 48%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: var(--brand-gray);
+
+    --muted: 0 0% 96%;
+    --muted-foreground: var(--brand-gray);
+
+    --accent: var(--brand-orange);
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: var(--brand-orange);
+
+    --radius: 0.75rem;
+
+    /* Fitness theme colors */
+    --fitness-primary: var(--brand-orange);
+    --fitness-secondary: var(--brand-gray);
+    --fitness-dark: var(--brand-dark);
+    --fitness-darker: var(--brand-darker);
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(23 89% 40%));
+    --gradient-card: linear-gradient(145deg, hsl(var(--background)), hsl(var(--muted)));
+    --gradient-brand: linear-gradient(135deg, hsl(var(--brand-orange)), hsl(var(--brand-gray)));
+    
+    /* Shadows */
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-brand: 0 10px 30px -5px hsl(var(--brand-orange) / 0.3);
+    --shadow-dark: 0 10px 30px -5px hsl(var(--brand-dark) / 0.2);
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: var(--brand-gray);
+    --sidebar-primary: var(--brand-orange);
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 95%;
+    --sidebar-accent-foreground: var(--brand-gray);
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: var(--brand-orange);
+  }
+
+  .dark {
+    /* Dark Theme - usando as cores fornecidas */
+    --background: var(--brand-dark);       /* #121212 */
+    --foreground: var(--brand-gray);       /* #B6BBBE */
+
+    --card: var(--brand-darker);           /* #1A1A1A */
+    --card-foreground: var(--brand-gray);  /* #B6BBBE */
+
+    --popover: var(--brand-darker);        /* #1A1A1A */
+    --popover-foreground: var(--brand-gray); /* #B6BBBE */
+
+    --primary: var(--brand-orange);        /* #F36D24 */
+    --primary-foreground: var(--brand-dark); /* #121212 */
+    --primary-hover: 23 89% 65%;
+
+    --secondary: var(--brand-darker);      /* #1A1A1A */
+    --secondary-foreground: var(--brand-gray); /* #B6BBBE */
+
+    --muted: var(--brand-darker);          /* #1A1A1A */
+    --muted-foreground: 0 0% 65%;
+
+    --accent: var(--brand-darker);         /* #1A1A1A */
+    --accent-foreground: var(--brand-gray); /* #B6BBBE */
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: var(--brand-orange);           /* #F36D24 */
+
+    /* Sidebar Dark */
+    --sidebar-background: var(--brand-dark);    /* #121212 */
+    --sidebar-foreground: var(--brand-gray);    /* #B6BBBE */
+    --sidebar-primary: var(--brand-orange);     /* #F36D24 */
+    --sidebar-primary-foreground: var(--brand-dark); /* #121212 */
+    --sidebar-accent: var(--brand-darker);      /* #1A1A1A */
+    --sidebar-accent-foreground: var(--brand-gray); /* #B6BBBE */
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: var(--brand-orange);        /* #F36D24 */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Brand-specific utility classes */
+  .bg-brand-orange {
+    @apply bg-[hsl(var(--brand-orange))];
+  }
+  
+  .bg-brand-gray {
+    @apply bg-[hsl(var(--brand-gray))];
+  }
+  
+  .bg-brand-dark {
+    @apply bg-[hsl(var(--brand-dark))];
+  }
+  
+  .bg-brand-darker {
+    @apply bg-[hsl(var(--brand-darker))];
+  }
+  
+  .text-brand-orange {
+    @apply text-[hsl(var(--brand-orange))];
+  }
+  
+  .text-brand-gray {
+    @apply text-[hsl(var(--brand-gray))];
+  }
+  
+  .border-brand-orange {
+    @apply border-[hsl(var(--brand-orange))];
+  }
+  
+  /* Gradient utilities */
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .bg-gradient-brand {
+    background: var(--gradient-brand);
+  }
+  
+  /* Shadow utilities */
+  .shadow-brand {
+    box-shadow: var(--shadow-brand);
+  }
+  
+  .shadow-dark {
+    box-shadow: var(--shadow-dark);
+  }
+  
+  /* Custom button variants using brand colors */
+  .btn-brand {
+    @apply bg-brand-orange text-white hover:bg-[hsl(23_89%_48%)] transition-colors;
+  }
+  
+  .btn-brand-outline {
+    @apply border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white transition-colors;
+  }
+}
